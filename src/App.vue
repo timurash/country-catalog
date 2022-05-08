@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import CountryCatalog from './components/CountryCatalog.vue';
+
 </script>
 
 <template>
-  <HelloWorld />
+  <CountryCatalog />
 </template>
 
 <style>
