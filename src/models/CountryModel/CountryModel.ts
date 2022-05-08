@@ -1,11 +1,14 @@
-import CountryCurrencyModel from './CountryCurrencyModel';
-
 export default interface CountryModel {
   name: {
     common: string,
     official: string,
   },
-  currencies: Array<CountryCurrencyModel>,
+  currencies: {
+    [key: string]: {
+      name: string,
+      symbol: string,
+    },
+  }
   capital: string,
   maps: {
     googleMaps: string,

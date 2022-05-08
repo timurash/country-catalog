@@ -15,16 +15,32 @@ onMounted(async () => {
 async function searchCountries(searchText: string) {
   countries.value = await getCountriesByName(searchText);
 }
-
 </script>
 
 <template>
-  <div>Country catalog</div>
-  <SearchBar @search-text-update="searchCountries" />
-  <div
-    v-for="country in countries"
-    :key="country.name"
-  >
-    <CountryCard :country="country" />
+  <div class="catalog-container">
+    <SearchBar @search-text-update="searchCountries" />
+    <div class="country-cards-container">
+      <div
+        v-for="country in countries"
+        :key="country.name"
+      >
+        <CountryCard :country="country" />
+      </div>
+    </div>
   </div>
 </template>
+
+<style scoped lang="scss">
+.catalog-container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  .country-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+  }
+}
+</style>
