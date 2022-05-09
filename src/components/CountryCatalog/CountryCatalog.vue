@@ -9,7 +9,7 @@ import SearchBar from './SearchBar.vue';
 const countries = ref<CountryModel[]>();
 
 onMounted(async () => {
-  countries.value = (await getAllCountries()).slice(0, 18);
+  countries.value = (await getAllCountries()).slice(0, 30);
 });
 
 async function searchCountries(searchText: string): Promise<void> {

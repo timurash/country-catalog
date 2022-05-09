@@ -20,16 +20,13 @@ function getCurrenciesCaption(country: CountryModel) {
 
 <template>
   <ElCard
-    :body-style="{ padding: '0', height: '100%' }"
     class="country-card"
   >
-    <div class="image-container">
-      <img
-        :src="country.flags.png"
-        alt="none"
-        class="image"
-      >
-    </div>
+    <img
+      :src="country.flags.png"
+      alt="none"
+      class="image"
+    >
     <div class="country-info-container">
       <span class="title">{{ country.name.common }}</span>
       <div class="capital">
@@ -48,12 +45,33 @@ function getCurrenciesCaption(country: CountryModel) {
 <style scoped lang="scss">
 .country-card {
   width: 16rem;
-  height: 22rem;
+  height: 21rem;
   margin: 1rem;
+  box-shadow: var(--el-box-shadow-lighter);
+
+  &:hover {
+    box-shadow: var(--el-box-shadow-light);
+  }
+
+  :deep(.el-card__body) {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .image {
+    max-height: 50%;
+    width: 100%;
+    display: block;
+  }
 
   .country-info-container {
+    height: 50%;
     padding: 1rem;
     text-align: start;
+    box-sizing: border-box;
 
     .title {
       font-size: 18px;
@@ -65,18 +83,6 @@ function getCurrenciesCaption(country: CountryModel) {
       font-size: 1rem;
       font-weight: 400;
       margin-top: 0.5rem;
-    }
-  }
-
-  .image-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    height: 50%;
-
-    .image {
-      width: 100%;
-      display: block;
     }
   }
 }

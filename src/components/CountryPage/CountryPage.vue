@@ -22,7 +22,9 @@ function getPopulationCaption(country: CountryModel): string {
 }
 
 function getCurrenciesCaption(country: CountryModel): string {
-  return Object.keys(country.currencies).join(', ');
+  return Object.keys(country.currencies)
+    .map((currencyKey) => `${country.currencies[currencyKey].name} (${currencyKey} - ${country.currencies[currencyKey].symbol})`)
+    .join(', ');
 }
 
 function getLanguagesCaption(country: CountryModel): string {
@@ -36,11 +38,8 @@ function getTimezonesCaption(country: CountryModel): string {
 
 <template>
   <div class="country-page">
-    <template v-if="isLoading">
-      loading
-    </template>
     <ElCard
-      v-else
+      v-if="!isLoading"
       class="box-card"
     >
       <template #header>
