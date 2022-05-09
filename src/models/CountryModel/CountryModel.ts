@@ -9,7 +9,7 @@ export default interface CountryModel {
       symbol: string,
     },
   },
-  capital: string,
+  capital: Array<string>,
   maps: {
     googleMaps: string,
   },
@@ -20,4 +20,6 @@ export default interface CountryModel {
     [key: string]: string,
   },
   population: number,
+  region: string,
+  timezones: Array<string>,
 }

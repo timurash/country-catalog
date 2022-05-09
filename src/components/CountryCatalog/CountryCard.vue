@@ -33,13 +33,13 @@ function getCurrenciesCaption(country: CountryModel) {
     <div class="country-info-container">
       <span class="title">{{ country.name.common }}</span>
       <div class="capital">
-        Capital: {{ country.capital[0] }}
+        <strong>Capital:</strong> {{ country.capital[0] }}
       </div>
       <div class="capital">
-        Languages: {{ getLanguagesCaption(country) }}
+        <strong>Languages:</strong> {{ getLanguagesCaption(country) }}
       </div>
       <div class="capital">
-        Currencies: {{ getCurrenciesCaption(country) }}
+        <strong>Currencies:</strong> {{ getCurrenciesCaption(country) }}
       </div>
     </div>
   </ElCard>

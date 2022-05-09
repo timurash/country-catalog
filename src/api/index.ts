@@ -15,6 +15,9 @@ const countriesByNameQueryFields = [
   'languages',
   'population',
   'flags',
+  'maps',
+  'timezones',
+  'region',
 ];
 
 export async function getAllCountries(): Promise<Array<CountryModel>> {
