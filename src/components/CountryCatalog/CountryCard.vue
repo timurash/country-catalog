@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ElCard } from 'element-plus';
 import { defineProps, PropType } from 'vue';
-import CountryModel from '../models/CountryModel/CountryModel';
+import CountryModel from '../../models/CountryModel/CountryModel';
 
 const props = defineProps({
   country: { type: Object as PropType<CountryModel>, required: true },

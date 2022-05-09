@@ -8,7 +8,7 @@ export default interface CountryModel {
       name: string,
       symbol: string,
     },
-  }
+  },
   capital: string,
   maps: {
     googleMaps: string,
@@ -19,4 +19,5 @@ export default interface CountryModel {
   languages: {
     [key: string]: string,
   },
+  population: number,
 }

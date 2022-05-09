@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { getAllCountries, getCountriesByName } from '../api';
+import { getAllCountries, getCountriesByName } from '../../api';
 
-import CountryModel from '../models/CountryModel/CountryModel';
+import CountryModel from '../../models/CountryModel/CountryModel';
 import CountryCard from './CountryCard.vue';
 import SearchBar from './SearchBar.vue';
 
@@ -12,8 +12,12 @@ onMounted(async () => {
   countries.value = await getAllCountries();
 });
 
-async function searchCountries(searchText: string) {
+async function searchCountries(searchText: string): Promise<void> {
   countries.value = await getCountriesByName(searchText);
+}
+
+function getCountryPageRoute(country: CountryModel): string {
+  return `/country/${country.name.common.toLowerCase()}`;
 }
 </script>
 
@@ -23,9 +27,14 @@ async function searchCountries(searchText: string) {
     <div class="country-cards-container">
       <div
         v-for="country in countries"
-        :key="country.name"
+        :key="country.name.common"
       >
-        <CountryCard :country="country" />
+        <router-link
+          :to="getCountryPageRoute(country)"
+          style="text-decoration: none"
+        >
+          <CountryCard :country="country" />
+        </router-link>
       </div>
     </div>
   </div>
