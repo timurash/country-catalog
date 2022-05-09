@@ -4,7 +4,11 @@ import TopMenu from './components/TopMenu/TopMenu.vue';
 
 <template>
   <TopMenu />
-  <RouterView />
+  <RouterView v-slot="{ Component }">
+    <transition name="fade">
+      <component :is="Component" />
+    </transition>
+  </RouterView>
 </template>
 
 <style lang="scss">
@@ -29,5 +33,15 @@ html,
 body,
 #app {
   height: 100%;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
