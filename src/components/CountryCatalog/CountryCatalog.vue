@@ -9,7 +9,7 @@ import SearchBar from './SearchBar.vue';
 const countries = ref<CountryModel[]>();
 
 onMounted(async () => {
-  countries.value = await getAllCountries();
+  countries.value = (await getAllCountries()).slice(0, 18);
 });
 
 async function searchCountries(searchText: string): Promise<void> {
@@ -49,7 +49,7 @@ function getCountryPageRoute(country: CountryModel): string {
   .country-cards-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: space-evenly;
   }
 }
 </style>

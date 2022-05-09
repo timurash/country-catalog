@@ -79,6 +79,5 @@ function getCurrenciesCaption(country: CountryModel) {
       display: block;
     }
   }
-
 }
 </style>
