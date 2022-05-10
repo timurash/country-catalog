@@ -10,7 +10,10 @@ import { ElCard } from 'element-plus';
       </template>
       <div class="description-container">
         <p>
-          This is a personal project to improve developer skills
+          This project is integration with the
+          <a href="https://restcountries.com/#api-endpoints-v2">
+            REST Countries V2 API
+          </a>
         </p>
         <h3>Technology stack</h3>
         <ul>
@@ -29,6 +32,7 @@ import { ElCard } from 'element-plus';
             >
               Element Plus
             </a>
+            UI library
           </li>
           <li>
             <a
@@ -63,6 +67,11 @@ import { ElCard } from 'element-plus';
     max-width: 70rem;
     margin: 3rem;
 
+    :deep(.el-card__header) {
+      text-align: left;
+      padding: 0.5rem 1rem;
+    }
+
     .description-container {
       text-align: left;
 
@@ -70,7 +79,7 @@ import { ElCard } from 'element-plus';
       a:visited,
       a:active {
         color: inherit;
-        text-decoration: none;
+        text-decoration: underline;
       }
 
       ul li {
