@@ -6,6 +6,7 @@ import { MapLocation } from '@element-plus/icons-vue';
 
 import { getCountriesByName } from '../../api';
 import CountryModel from '../../models/CountryModel/CountryModel';
+import { formatKebabToNormal } from '../../utils';
 
 const isLoading = ref(true);
 const countryInfo = ref<CountryModel>();
@@ -13,7 +14,9 @@ const countryInfo = ref<CountryModel>();
 const { countryName } = useRoute().params;
 
 onMounted(async () => {
-  [countryInfo.value] = await getCountriesByName(countryName as string);
+  [countryInfo.value] = await getCountriesByName(
+    formatKebabToNormal(countryName as string),
+  );
   isLoading.value = false;
 });
 

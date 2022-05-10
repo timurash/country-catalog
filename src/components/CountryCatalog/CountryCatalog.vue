@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { getAllCountries, getCountriesByName } from '../../api';
+import { getAllCountries } from '../../api';
 
+import { formatToKebabCase } from '../../utils';
 import CountryModel from '../../models/CountryModel/CountryModel';
 import CountryCard from './CountryCard.vue';
 import SearchBar from './SearchBar.vue';
@@ -12,18 +13,14 @@ onMounted(async () => {
   countries.value = (await getAllCountries()).slice(0, 30);
 });
 
-async function searchCountries(searchText: string): Promise<void> {
-  countries.value = await getCountriesByName(searchText);
-}
-
 function getCountryPageRoute(country: CountryModel): string {
-  return `/country/${country.name.common.toLowerCase()}`;
+  return `/country/${formatToKebabCase(country.name.common)}`;
 }
 </script>
 
 <template>
   <div class="catalog-container">
-    <SearchBar @search-text-update="searchCountries" />
+    <SearchBar />
     <div class="country-cards-container">
       <div
         v-for="country in countries"
