@@ -33,3 +33,9 @@ export function getPopulationCaption(country: CountryModel): string {
 
   return formatter.format(country.population);
 }
+
+export function infiniteScrollConditionCheck(): boolean {
+  const targetScrollPosition = document.documentElement.scrollTop + window.innerHeight * 2;
+  const documentHeight = document.documentElement.offsetHeight;
+  return targetScrollPosition >= documentHeight;
+}

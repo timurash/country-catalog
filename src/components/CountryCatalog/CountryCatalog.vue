@@ -2,7 +2,7 @@
 import { computed, onMounted, ref } from 'vue';
 
 import { getAllCountries } from '../../api';
-import { formatToKebabCase } from '../../utils';
+import { formatToKebabCase, infiniteScrollConditionCheck } from '../../utils';
 import CountryModel from '../../models/CountryModel/CountryModel';
 import CountryCard from './CountryCard.vue';
 import SearchBar from './SearchBar.vue';
@@ -17,14 +17,15 @@ onMounted(async () => {
 let ticking = false;
 
 window.onscroll = () => {
+  const isNeedToAddComponents = infiniteScrollConditionCheck();
+
   if (!ticking) {
     window.requestAnimationFrame(() => {
-      const windowRelativeBottom = document
-        .documentElement.getBoundingClientRect().bottom;
-      if (windowRelativeBottom < document.documentElement.clientHeight + 300) {
-        visibleCountriesCount.value += 10;
-        ticking = false;
+      if (isNeedToAddComponents) {
+        visibleCountriesCount.value += 6;
       }
+
+      ticking = false;
     });
 
     ticking = true;

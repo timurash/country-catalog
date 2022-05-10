@@ -29,12 +29,6 @@ html {
   font-size: 14px;
 }
 
-html,
-body,
-#app {
-  height: 100%;
-}
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s ease-in-out;
