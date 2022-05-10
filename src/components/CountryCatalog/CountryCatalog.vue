@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
 import { getAllCountries } from '../../api';
 import { formatToKebabCase } from '../../utils';
@@ -8,10 +8,30 @@ import CountryCard from './CountryCard.vue';
 import SearchBar from './SearchBar.vue';
 
 const countries = ref<CountryModel[]>();
+const visibleCountriesCount = ref(30);
 
 onMounted(async () => {
-  countries.value = (await getAllCountries()).slice(0, 30);
+  countries.value = (await getAllCountries());
 });
+
+let ticking = false;
+
+window.onscroll = () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      const windowRelativeBottom = document
+        .documentElement.getBoundingClientRect().bottom;
+      if (windowRelativeBottom < document.documentElement.clientHeight + 300) {
+        visibleCountriesCount.value += 10;
+        ticking = false;
+      }
+    });
+
+    ticking = true;
+  }
+};
+
+const visibleCountries = computed(() => countries.value?.slice(0, visibleCountriesCount.value));
 
 function getCountryPageRoute(country: CountryModel): string {
   return `/country/${formatToKebabCase(country.name.common)}`;
@@ -23,7 +43,7 @@ function getCountryPageRoute(country: CountryModel): string {
     <SearchBar />
     <div class="country-cards-container">
       <div
-        v-for="country in countries"
+        v-for="country in visibleCountries"
         :key="country.name.common"
       >
         <router-link
@@ -46,6 +66,7 @@ function getCountryPageRoute(country: CountryModel): string {
   .country-cards-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
   }
 }
 </style>
