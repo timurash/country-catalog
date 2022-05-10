@@ -3,7 +3,7 @@ import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { ElMenu, ElMenuItem } from 'element-plus';
 
-const activeIndex = ref('');
+const activeIndex = ref('/');
 
 const router = useRouter();
 
@@ -13,6 +13,10 @@ watch(
     activeIndex.value = newRoute;
   },
 );
+
+function goToGithubRepo(): void {
+  window.open('https://github.com/timurash/country-catalog');
+}
 </script>
 
 <template>
@@ -33,7 +37,10 @@ watch(
     >
       About
     </el-menu-item>
-    <el-menu-item index="2">
+    <el-menu-item
+      index=""
+      @click="goToGithubRepo"
+    >
       GitHub
     </el-menu-item>
   </el-menu>
