@@ -1,10 +1,18 @@
 <script setup lang="ts">
+import { ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
 import { ElMenu, ElMenuItem } from 'element-plus';
-import { ref } from 'vue';
 
-const activeIndex = ref('/');
+const activeIndex = ref('');
 
-function handleSelect() {}
+const router = useRouter();
+
+watch(
+  () => router.currentRoute.value.path,
+  (newRoute) => {
+    activeIndex.value = newRoute;
+  },
+);
 </script>
 
 <template>
@@ -13,7 +21,6 @@ function handleSelect() {}
     class="top-menu"
     mode="horizontal"
     :router="true"
-    @select="handleSelect"
   >
     <el-menu-item
       index="/"
