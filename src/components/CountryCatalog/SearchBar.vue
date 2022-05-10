@@ -47,7 +47,7 @@ async function onCountrySelect(countryName: AutocompleteValueModel) {
 
   :deep(.el-autocomplete) {
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     margin: 0 0 1rem 1rem;
 
     .el-input {

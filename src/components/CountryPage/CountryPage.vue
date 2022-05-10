@@ -6,7 +6,13 @@ import { MapLocation } from '@element-plus/icons-vue';
 
 import { getCountriesByName } from '../../api';
 import CountryModel from '../../models/CountryModel/CountryModel';
-import { formatKebabToNormal } from '../../utils';
+import {
+  formatKebabToNormal,
+  getCurrenciesCaption,
+  getTimezonesCaption,
+  getLanguagesCaption,
+  getPopulationCaption,
+} from '../../utils';
 
 const isLoading = ref(true);
 const countryInfo = ref<CountryModel>();
@@ -19,24 +25,6 @@ onMounted(async () => {
   );
   isLoading.value = false;
 });
-
-function getPopulationCaption(country: CountryModel): string {
-  return `${country.population}`;
-}
-
-function getCurrenciesCaption(country: CountryModel): string {
-  return Object.keys(country.currencies)
-    .map((currencyKey) => `${country.currencies[currencyKey].name} (${currencyKey} - ${country.currencies[currencyKey].symbol})`)
-    .join(', ');
-}
-
-function getLanguagesCaption(country: CountryModel): string {
-  return Object.values(country.languages).join(', ');
-}
-
-function getTimezonesCaption(country: CountryModel): string {
-  return Object.values(country.timezones).join(', ');
-}
 </script>
 
 <template>

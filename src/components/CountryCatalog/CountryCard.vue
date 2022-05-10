@@ -2,26 +2,15 @@
 import { ElCard } from 'element-plus';
 import { defineProps, PropType } from 'vue';
 import CountryModel from '../../models/CountryModel/CountryModel';
+import { getCurrenciesCaption, getLanguagesCaption } from '../../utils';
 
 const props = defineProps({
   country: { type: Object as PropType<CountryModel>, required: true },
 });
-
-function getLanguagesCaption(country: CountryModel) {
-  return Object.values(country.languages).join(', ');
-}
-
-function getCurrenciesCaption(country: CountryModel) {
-  return Object.keys(country.currencies)
-    .map((key) => `${key} (${country.currencies[key].name}: ${country.currencies[key].symbol})`)
-    .join(', ');
-}
 </script>
 
 <template>
-  <ElCard
-    class="country-card"
-  >
+  <ElCard class="country-card">
     <img
       :src="country.flags.png"
       alt="none"

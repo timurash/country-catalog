@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { getAllCountries } from '../../api';
 
+import { getAllCountries } from '../../api';
 import { formatToKebabCase } from '../../utils';
 import CountryModel from '../../models/CountryModel/CountryModel';
 import CountryCard from './CountryCard.vue';
