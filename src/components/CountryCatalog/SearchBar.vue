@@ -1,22 +1,27 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, PropType } from 'vue';
 import { useRouter } from 'vue-router';
 import { ElAutocomplete } from 'element-plus';
 import { Search } from '@element-plus/icons-vue';
 
-import { suggestCountryName } from '../../api';
+import CountryModel from '../../models/CountryModel/CountryModel';
 import { formatToKebabCase } from '../../utils';
 import AutocompleteValueModel from '../../models/AutocompleteValueModel';
 
+const props = defineProps({
+  countries: { type: Array as PropType<Array<CountryModel> | undefined>, required: true },
+});
+
 const searchText = ref('');
 
-const querySearch = async (
+const querySearch = (
   queryString: string,
-  callback: (arr: Array<AutocompleteValueModel>) => void,
+  callback: (string: Array<{ value: string }>) => void,
 ) => {
-  const results = (await suggestCountryName(queryString))
+  const results = (props.countries?.filter((x) => x.name.common.toLowerCase()
+    .includes(queryString.toLowerCase()))
     .slice(0, 20)
-    .map((x) => ({ value: x?.name?.common }));
+    .map((x) => ({ value: x?.name?.common }))) ?? [];
   callback(results);
 };
 

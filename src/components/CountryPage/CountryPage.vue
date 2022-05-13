@@ -15,7 +15,12 @@ import {
 } from '../../utils';
 
 const isLoading = ref(true);
-const countryInfo = ref<CountryModel>();
+
+const countryInfo = ref<CountryModel>({
+  name: {
+    common: '',
+  },
+});
 
 const { countryName } = useRoute().params;
 

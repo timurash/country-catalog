@@ -1,6 +1,9 @@
 import CountryModel from '../models/CountryModel/CountryModel';
 
-export function formatToKebabCase(input: string): string {
+export function formatToKebabCase(input: string | undefined): string {
+  if (input === undefined) {
+    return '';
+  }
   return input
     .replace(/([a-z])([A-Z])/g, '$1-$2')
     .replace(/[\s_]+/g, '-')
@@ -12,18 +15,22 @@ export function formatKebabToNormal(input: string): string {
 }
 
 export function getCurrenciesCaption(country: CountryModel): string {
+  if (country.currencies === undefined) {
+    return '';
+  }
   return Object.keys(country.currencies)
     .map((currencyKey) => `${currencyKey} `
-      + `(${country.currencies[currencyKey].name}: ${country.currencies[currencyKey].symbol})`)
+      + `(${country?.currencies?.[currencyKey]?.name ?? ''}: `
+      + `${country?.currencies?.[currencyKey]?.symbol ?? ''})`)
     .join(', ');
 }
 
 export function getTimezonesCaption(country: CountryModel): string {
-  return Object.values(country.timezones).join(', ');
+  return Object.values(country.timezones ?? []).join(', ');
 }
 
 export function getLanguagesCaption(country: CountryModel): string {
-  return Object.values(country.languages).join(', ');
+  return Object.values(country.languages ?? []).join(', ');
 }
 
 export function getPopulationCaption(country: CountryModel): string {
@@ -31,7 +38,11 @@ export function getPopulationCaption(country: CountryModel): string {
     maximumSignificantDigits: 3,
   });
 
-  return formatter.format(country.population);
+  if (country.population) {
+    return formatter.format(country.population);
+  }
+
+  return '';
 }
 
 export function infiniteScrollConditionCheck(): boolean {

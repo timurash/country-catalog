@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ElCard } from 'element-plus';
-import { defineProps, PropType } from 'vue';
+import { PropType } from 'vue';
 import CountryModel from '../../models/CountryModel/CountryModel';
 import { getCurrenciesCaption, getLanguagesCaption } from '../../utils';
 
-const props = defineProps({
+defineProps({
   country: { type: Object as PropType<CountryModel>, required: true },
 });
 </script>

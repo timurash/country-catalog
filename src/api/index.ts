@@ -37,22 +37,4 @@ Promise<Array<CountryModel>> {
     .then((response) => response.json()) as Promise<Array<CountryModel>>;
 }
 
-export async function suggestCountryName(searchText: string):
-Promise<Array<CountryModel>> {
-  const url = new URL(`https://restcountries.com/v3.1/name/${searchText}`);
-  url.searchParams.append('fields', 'name');
-
-  const response = await fetch(url.toString());
-
-  if (response.ok) {
-    return await response.json() as Promise<Array<CountryModel>>;
-  }
-
-  if (response.status === 404) {
-    return [];
-  }
-
-  throw new Error('Unknown error');
-}
-
 export default { getAllCountries, getCountriesByName };

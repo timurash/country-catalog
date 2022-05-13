@@ -41,7 +41,7 @@ function getCountryPageRoute(country: CountryModel): string {
 
 <template>
   <div class="catalog-container">
-    <SearchBar />
+    <SearchBar :countries="countries" />
     <div class="country-cards-container">
       <div
         v-for="country in visibleCountries"
