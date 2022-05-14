@@ -3,11 +3,6 @@ module.exports = {
     node: true,
     'vue/setup-compiler-macros': true,
   },
-  rules: {
-    'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': 'off',
-    'vue/script-setup-uses-vars': 'error',
-  },
   overrides: [
     {
       files: ['*.ts', '*.tsx', '*.vue'],
