@@ -1,14 +1,26 @@
 module.exports = {
   env: {
     node: true,
+    'vue/setup-compiler-macros': true,
   },
-  extends: [
-    'airbnb-base',
-    'eslint:recommended',
-    'plugin:vue/vue3-recommended',
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx', '*.vue'],
+      parser: 'vue-eslint-parser',
+      rules: {
+      },
+      extends: [
+        'airbnb-base',
+        'plugin:vue/vue3-recommended',
+        'airbnb-typescript/base',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+      ],
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        project: ['./tsconfig.json'],
+        extraFileExtensions: ['.vue'],
+      },
+    },
   ],
-  rules: {
-    // override/add rules settings here, such as:
-    // 'vue/no-unused-vars': 'error'
-  },
 };
