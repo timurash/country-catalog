@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 const CountryCatalog = () => import('../components/CountryCatalog/CountryCatalog.vue');
 const CountryPage = () => import('../components/CountryPage/CountryPage.vue');
@@ -12,6 +12,6 @@ const routes = [
 
 export default createRouter({
   scrollBehavior: () => ({ left: 0, top: 0 }),
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 });
