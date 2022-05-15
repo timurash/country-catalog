@@ -6,7 +6,7 @@ import { ElCard } from 'element-plus';
   <div class="about-page">
     <ElCard class="box-card">
       <template #header>
-        <h3>PROJECT OVERVIEW</h3>
+        <h3>COUNTRY CATALOG PROJECT</h3>
       </template>
       <div class="description-container">
         <p>
@@ -15,24 +15,27 @@ import { ElCard } from 'element-plus';
             REST Countries V2 API
           </a>
         </p>
-        <h3>Technology stack</h3>
+        <p>
+          The original goal was to try out the most up-to-date front-end tools
+          at the moment like composition API, Vite bundler, pNPM package manager and etc
+        </p>
+        <h3>Technology stack:</h3>
         <ul>
           <li>
             <a
               href="https://vuejs.org"
               target="_blank"
             >
-              Vue 3 (Composition API) + Vue Router
+              Vue 3 (Composition API)
             </a>
           </li>
           <li>
             <a
-              href="https://element-plus.org"
+              href="https://router.vuejs.org"
               target="_blank"
             >
-              Element Plus
+              Vue Router
             </a>
-            UI library
           </li>
           <li>
             <a
@@ -42,10 +45,42 @@ import { ElCard } from 'element-plus';
           </li>
           <li>
             <a
-              href="https://vitejs.dev/"
+              href="https://element-plus.org"
+              target="_blank"
+            >
+              Element Plus UI library
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://vitejs.dev"
               target="_blank"
             >
               Vite
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://jestjs.io"
+              target="_blank"
+            >
+              Jest
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://testing-library.com"
+              target="_blank"
+            >
+              Vue Testing Library
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://pnpm.io"
+              target="_blank"
+            >
+              pNPM package manager
             </a>
           </li>
         </ul>
