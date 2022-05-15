@@ -7,8 +7,6 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx', '*.vue'],
       parser: 'vue-eslint-parser',
-      rules: {
-      },
       extends: [
         'airbnb-base',
         'plugin:vue/vue3-recommended',
