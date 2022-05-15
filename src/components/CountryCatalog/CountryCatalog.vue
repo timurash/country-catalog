@@ -4,7 +4,7 @@ import { computed, onMounted, ref } from 'vue';
 import { getAllCountries } from '../../api';
 import { formatToKebabCase, infiniteScrollConditionCheck } from '../../utils';
 import CountryModel from '../../models/CountryModel/CountryModel';
-import CountryCard from './CountryCard.vue';
+import CountryCard from './Cards/CountryCard.vue';
 import SearchBar from './SearchBar.vue';
 
 const countries = ref<CountryModel[]>();
